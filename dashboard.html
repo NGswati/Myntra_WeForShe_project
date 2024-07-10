@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap of the Day</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .upload-section {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .snap-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .snap-item {
+            width: calc(33.333% - 20px);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .snap-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .like-btn {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .like-btn:hover {
+            background: #e83874;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <a href="#" class="text-2xl font-bold text-pink-500">Myntra</a>
+            <nav class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-pink-500">Home</a>
+                <a href="#" class="text-gray-700 hover:text-pink-500">Profile</a>
+                <a href="#" class="text-gray-700 hover:text-pink-500" id="credits">Credits: 0</a>
+                <a href="#" class="text-gray-700 hover:text-pink-500">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto mt-10">
+        <section class="upload-section">
+            <h2 class="text-2xl font-bold mb-4 text-center">Snap of the Day Contest</h2>
+            <p class="text-center mb-4">Upload your best pictures and compete to earn the most likes. The picture with
+                the highest number of likes at the end of the day will be awarded credit points, which can be used as
+                discounts on future purchases. Showcase your creativity and win exciting rewards!</p>
+            <form class="mb-6" id="uploadForm">
+                <label class="block mb-2 text-sm font-bold text-gray-700" for="file-upload">Upload your picture</label>
+                <input type="file" id="file-upload"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100">
+                <button type="submit"
+                    class="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Upload</button>
+            </form>
+        </section>
+        <section class="mt-10">
+            <h2 class="text-2xl font-bold mb-4">Today's Snaps</h2>
+            <div class="snap-container" id="snapContainer">
+                <!-- Example Snap Item -->
+                <!--
+                <div class="snap-item">
+                    <img src="path/to/image.jpg" alt="Snap Image">
+                    <button class="like-btn">Like</button>
+                </div>
+                -->
+                <!-- Add more snap items here -->
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white mt-10 py-6">
+        <div class="container mx-auto text-center">
+            © 2024 www.myntra.com. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        let credits = 0;
+
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            const fileInput = document.getElementById('file-upload');
+            if (fileInput.files.length === 0) {
+                alert("Please select a file to upload.");
+                return;
+            }
+
+            // Simulate file upload and add snap to the container
+            const snapContainer = document.getElementById('snapContainer');
+            const snapItem = document.createElement('div');
+            snapItem.classList.add('snap-item');
+
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(fileInput.files[0]);
+            snapItem.appendChild(img);
+
+            const likeBtn = document.createElement('button');
+            likeBtn.classList.add('like-btn');
+            likeBtn.textContent = "Like";
+            snapItem.appendChild(likeBtn);
+
+            snapContainer.appendChild(snapItem);
+
+            // Reset the file input
+            fileInput.value = "";
+
+            // Add 2 credit points
+            credits += 2;
+            document.getElementById('credits').textContent = `Credits: ${credits}`;
+        });
+    </script>
+</body>
+
+</html>
