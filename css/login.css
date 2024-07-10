@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.offer-banner {
+    background-color: #fde8e8;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    text-align: left;
+}
+
+.offer-banner p {
+    margin: 5px 0;
+    color: #ff4081;
+}
+
+.offer-banner span {
+    font-weight: bold;
+}
+
+.offer-banner img {
+    width: 100px;
+    float: right;
+    margin-top: -50px;
+}
+
+.login-form {
+    padding: 20px;
+    width: 100%;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.input-group span {
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+    color: #333;
+}
+
+.input-group input {
+    border: none;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.login-form p {
+    margin: 10px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.login-form a {
+    color: #ff4081;
+    text-decoration: none;
+}
+
+.login-form button {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.login-form button:hover {
+    background-color: #e83874;
+}
+
+.help-text {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
