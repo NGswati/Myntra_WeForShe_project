@@ -14,6 +14,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
         }
 
         .snap-container {
@@ -27,6 +28,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
         }
 
         .snap-item img {
@@ -48,90 +50,262 @@
         .like-btn:hover {
             background: #e83874;
         }
+
+        .liked {
+            animation: rise 0.5s ease-in-out;
+        }
+
+        @keyframes rise {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .upload-message {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+
+        .fun-zone-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            margin-top: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .fun-zone-container img {
+            max-width: 45%;
+            border-radius: 10px;
+        }
+
+        .fun-zone-container .snap-container {
+            max-width: 50%;
+        }
+
+        .gold-border {
+            border: 5px solid gold;
+        }
     </style>
 </head>
 
 <body class="bg-gray-100">
     <header class="bg-white shadow">
         <div class="container mx-auto flex justify-between items-center py-4">
-            <a href="#" class="text-2xl font-bold text-pink-500">Myntra</a>
+            <a href="/inde" class="text-2xl font-bold text-pink-500">Myntra Studio</a>
             <nav class="flex space-x-4">
-                <a href="#" class="text-gray-700 hover:text-pink-500">Home</a>
-                <a href="#" class="text-gray-700 hover:text-pink-500">Profile</a>
+                <a href="/inde" class="text-gray-700 hover:text-pink-500">Home</a>
+                <a href="/profile" class="text-gray-700 hover:text-pink-500">Profile</a>
                 <a href="#" class="text-gray-700 hover:text-pink-500" id="credits">Credits: 0</a>
                 <a href="#" class="text-gray-700 hover:text-pink-500">Logout</a>
             </nav>
         </div>
-    </header>
-    <main class="container mx-auto mt-10">
-        <section class="upload-section">
-            <h2 class="text-2xl font-bold mb-4 text-center">Snap of the Day Contest</h2>
-            <p class="text-center mb-4">Upload your best pictures and compete to earn the most likes. The picture with
-                the highest number of likes at the end of the day will be awarded credit points, which can be used as
-                discounts on future purchases. Showcase your creativity and win exciting rewards!</p>
-            <form class="mb-6" id="uploadForm">
-                <label class="block mb-2 text-sm font-bold text-gray-700" for="file-upload">Upload your picture</label>
-                <input type="file" id="file-upload"
-                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100">
-                <button type="submit"
-                    class="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Upload</button>
-            </form>
-        </section>
-        <section class="mt-10">
-            <h2 class="text-2xl font-bold mb-4">Today's Snaps</h2>
-            <div class="snap-container" id="snapContainer">
-                <!-- Example Snap Item -->
-                <!--
+        <main class="container mx-auto mt-10">
+            <section class="fun-zone-container" id="funZoneContainer">
+                <img src="https://picsum.photos/500" alt="Fun Zone Image">
+                <div class="snap-container">
+                    <section class="upload-section">
+                        <h2 class="text-2xl font-bold mb-4 text-center">Snap of the Day Contest</h2>
+                        <p class="text-center mb-4">Upload your best pictures and compete to earn the most likes. The
+                            picture
+                            with the highest number of likes at the end of the day will be awarded credit points, which
+                            can
+                            be used as discounts on future purchases. Showcase your creativity and win exciting rewards!
+                        </p>
+                        <form class="mb-6" id="uploadForm">
+                            <label class="block mb-2 text-sm font-bold text-gray-700" for="file-upload">Upload your
+                                picture</label>
+                            <input type="file" id="file-upload"
+                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100">
+                            <button type="submit"
+                                class="mt-4 bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Upload</button>
+                        </form>
+                        <p class="upload-message" id="uploadMessage">Photo uploaded successfully!</p>
+                    </section>
+                </div>
+            </section>
+            <section class="mt-10">
+                <h2 class="text-2xl font-bold mb-4">Today's Snaps</h2>
+                <div class="snap-container" id="snapContainer">
+                    <!-- Example Snap Item -->
+                    <!--
                 <div class="snap-item">
                     <img src="path/to/image.jpg" alt="Snap Image">
                     <button class="like-btn">Like</button>
                 </div>
                 -->
-                <!-- Add more snap items here -->
+                    <!-- Add more snap items here -->
+                </div>
+            </section>
+        </main>
+        <main class="container mx-auto mt-10">
+            <section class="dashboard-container">
+                <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
+                <p class="mb-4">Welcome to your dashboard! Here you can manage your activities and view your profile.
+                </p>
+                <div class="nav-item">
+                    <a href="/profile" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">Go
+                        to Profile</a>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-white mt-10 py-6">
+            <div class="container mx-auto text-center">
+                © 2024 www.myntra.com. All rights reserved.
             </div>
-        </section>
-    </main>
-    <footer class="bg-white mt-10 py-6">
-        <div class="container mx-auto text-center">
-            © 2024 www.myntra.com. All rights reserved.
-        </div>
-    </footer>
-    <script>
-        let credits = 0;
+        </footer>
+        <script>
 
-        document.getElementById('uploadForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
+            let credits = 0;
+            const likeThreshold = 25;
+            const snaps = {};
 
-            const fileInput = document.getElementById('file-upload');
-            if (fileInput.files.length === 0) {
-                alert("Please select a file to upload.");
-                return;
+            document.getElementById('uploadForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const fileInput = document.getElementById('file-upload');
+                if (fileInput.files.length === 0) {
+                    alert("Please select a file to upload.");
+                    return;
+                }
+
+                // Simulate file upload and add snap to the container
+                const snapContainer = document.getElementById('snapContainer');
+                const snapItem = document.createElement('div');
+                snapItem.classList.add('snap-item');
+
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(fileInput.files[0]);
+                snapItem.appendChild(img);
+
+                const likeBtn = document.createElement('button');
+                likeBtn.classList.add('like-btn');
+                likeBtn.textContent = "Like";
+                snapItem.appendChild(likeBtn);
+
+                const likesCount = document.createElement('span');
+                likesCount.classList.add('likes-count');
+                const initialLikes = Math.floor(Math.random() * likeThreshold);
+                likesCount.textContent = `Likes: ${initialLikes}`;
+                snapItem.appendChild(likesCount);
+
+                snapContainer.appendChild(snapItem);
+
+                const snapId = Date.now();
+                snaps[snapId] = { likes: initialLikes, uploader: '1' };
+                snapItem.dataset.snapId = snapId;
+
+                fileInput.value = "";
+
+                credits += 0.1;
+                document.getElementById('credits').textContent = `Credits: ${credits}`;
+
+                const uploadMessage = document.getElementById('uploadMessage');
+                uploadMessage.style.display = 'block';
+                setTimeout(() => {
+                    uploadMessage.style.display = 'none';
+                }, 3000);
+            });
+
+            // Function to handle likes
+            document.getElementById('snapContainer').addEventListener('click', function (event) {
+                if (event.target.classList.contains('like-btn')) {
+                    const snapItem = event.target.closest('.snap-item');
+                    const snapId = snapItem.dataset.snapId;
+                    snaps[snapId].likes += 1;
+
+                    const likesCount = snapItem.querySelector('.likes-count');
+                    likesCount.textContent = `Likes: ${snaps[snapId].likes}`;
+
+                    if (snaps[snapId].likes === likeThreshold) {
+                        snapItem.classList.add('gold-border');
+                        // Send an update to the server to increase the user's SoTD_count, credit points
+                        credits += 4;
+                        document.getElementById('credits').textContent = `Credits: ${credits}`;
+                        updateSoTDCount(snaps[snapId].uploader);
+                    }
+                }
+            });
+
+            // Function to update SoTD count in the database
+            function updateSoTDCount(userId) {
+                fetch('/update-sotd', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId })
+                }).then(response => {
+                    if (!response.ok) {
+                        console.error('Failed to update SoTD count');
+                    }
+                    return response.json();
+                }).then(data => {
+                    alert(data.message);
+                }).catch(error => {
+                    console.error('Error updating SoTD count:', error);
+                });
             }
 
-            // Simulate file upload and add snap to the container
-            const snapContainer = document.getElementById('snapContainer');
-            const snapItem = document.createElement('div');
-            snapItem.classList.add('snap-item');
+            function fetchPhotos() {
+                fetch('https://picsum.photos/v2/list')
+                    .then(response => response.json())
+                    .then(data => {
+                        const snapContainer = document.getElementById('snapContainer');
+                        data.forEach(photo => {
+                            const snapItem = document.createElement('div');
+                            snapItem.classList.add('snap-item');
 
-            const img = document.createElement('img');
-            img.src = URL.createObjectURL(fileInput.files[0]);
-            snapItem.appendChild(img);
+                            const img = document.createElement('img');
+                            img.src = photo.download_url;
+                            img.alt = photo.author;
+                            snapItem.appendChild(img);
 
-            const likeBtn = document.createElement('button');
-            likeBtn.classList.add('like-btn');
-            likeBtn.textContent = "Like";
-            snapItem.appendChild(likeBtn);
+                            const likeBtn = document.createElement('button');
+                            likeBtn.classList.add('like-btn');
+                            likeBtn.textContent = "Like";
+                            likeBtn.addEventListener('click', () => {
+                                snapItem.classList.add('liked');
+                                setTimeout(() => {
+                                    snapItem.classList.remove('liked');
+                                }, 1000);
+                            });
+                            snapItem.appendChild(likeBtn);
 
-            snapContainer.appendChild(snapItem);
+                            const likesCount = document.createElement('span');
+                            likesCount.classList.add('likes-count');
+                            const initialLikes = Math.floor(Math.random() * (likeThreshold + 1));
+                            likesCount.textContent = `Likes: ${initialLikes}`;
+                            snapItem.appendChild(likesCount);
 
-            // Reset the file input
-            fileInput.value = "";
+                            snapContainer.appendChild(snapItem);
 
-            // Add 2 credit points
-            credits += 2;
-            document.getElementById('credits').textContent = `Credits: ${credits}`;
-        });
-    </script>
+                            const snapId = crypto.randomUUID(); // Use a timestamp as a unique ID for the snap
+                            snaps[snapId] = { likes: initialLikes, uploader: '1' };
+                            snapItem.dataset.snapId = snapId;
+                        });
+                    })
+                    .catch(error => console.error('Error fetching photos:', error));
+            }
+
+            fetchPhotos();
+
+            document.getElementById('funZoneContainer').style.backgroundImage = 'url(https://picsum.photos/1200/400)';
+
+        </script>
 </body>
 
 </html>

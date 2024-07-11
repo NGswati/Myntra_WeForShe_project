@@ -3,29 +3,29 @@ let bagItemObjects;
 onLoad();
 
 function onLoad() {
-    loadBagItemObjects();
-    displayBagItems();
-    displayBagSummary()
+  loadBagItemObjects();
+  displayBagItems();
+  displayBagSummary()
 
 }
 
 
 function displayBagSummary() {
-    let bagSummaryElement = document.querySelector(".bag-summary")
+  let bagSummaryElement = document.querySelector(".bag-summary")
 
-    let totalItem = 0
-    let totalMRP = 0
-    let totalDiscount = 0
+  let totalItem = 0
+  let totalMRP = 0
+  let totalDiscount = 0
 
 
-    bagItemObjects.forEach(bagItem => {
-        totalMRP += bagItem.original_price;
-        totalDiscount += bagItem.original_price - bagItem.current_price
-    })
+  bagItemObjects.forEach(bagItem => {
+    totalMRP += bagItem.original_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price
+  })
 
-    let totalamount = totalMRP - totalDiscount + 99
+  let totalamount = totalMRP - totalDiscount + 99
 
-    bagSummaryElement.innerHTML = `
+  bagSummaryElement.innerHTML = `
     <div class="bag-details-container">
     <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
     <div class="price-item">
@@ -53,38 +53,38 @@ function displayBagSummary() {
 }
 
 function loadBagItemObjects() {
-    console.log(bagItems);
-    bagItemObjects = bagItems.map(itemId => {
-        for (let i = 0; i < items.length; i++) {
-            if (itemId == items[i].id) {
-                return items[i];
-            }
-        }
-    });
-    console.log(bagItemObjects);
+  console.log(bagItems);
+  bagItemObjects = bagItems.map(itemId => {
+    for (let i = 0; i < items.length; i++) {
+      if (itemId == items[i].id) {
+        return items[i];
+      }
+    }
+  });
+  console.log(bagItemObjects);
 }
 
 function displayBagItems() {
-    let containerElement = document.querySelector('.bag-items-container');
-    let innerHTML = '';
-    bagItemObjects.forEach(bagItem => {
-        innerHTML += generateItemHTML(bagItem);
-    });
-    containerElement.innerHTML = innerHTML;
+  let containerElement = document.querySelector('.bag-items-container');
+  let innerHTML = '';
+  bagItemObjects.forEach(bagItem => {
+    innerHTML += generateItemHTML(bagItem);
+  });
+  containerElement.innerHTML = innerHTML;
 }
 
 function removeFromBag(itemId) {
-    bagItems = bagItems.filter(bagItemId => bagItemId != itemId);
-    localStorage.setItem('bagItems', JSON.stringify(bagItems));
-    loadBagItemObjects();
-    displayBagIcon();
-    displayBagItems();
-    displayBagSummary()
+  bagItems = bagItems.filter(bagItemId => bagItemId != itemId);
+  localStorage.setItem('bagItems', JSON.stringify(bagItems));
+  loadBagItemObjects();
+  displayBagIcon();
+  displayBagItems();
+  displayBagSummary()
 
 }
 
 function generateItemHTML(item) {
-    return `<div class="bag-item-container">
+  return `<div class="bag-item-container">
     <div class="item-left-part">
       <img class="bag-item-img" src="../${item.image}">
     </div>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .upload-section {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+        }
+
+        .snap-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .snap-item {
+            width: calc(33.333% - 20px);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .snap-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .like-btn {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .like-btn:hover {
+            background: #e83874;
+        }
+
+        .credit-score-section {
+            width: 90%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            height: 160px;
+            margin-bottom: 20px;
+            text-align: center;
+           
+        }
+        
+        .credit-score-section h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <a href="/index" class="text-2xl font-bold text-pink-500">Myntra Studio</a>
+            <nav class="flex space-x-4">
+                <a href="/index" class="text-gray-700 hover:text-pink-500">Home</a>
+                <a href="/dashboard" class="text-gray-700 hover:text-pink-500">Dashboard</a>
+                <a href="#" class="text-gray-700 hover:text-pink-500" id="credits">Credits: 0</a>
+                <a href="/login" class="text-gray-700 hover:text-pink-500">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto mt-10">
+        <!-- <section class="grid-section"> -->
+            <section class="credit-score-section">
+                <h2 class="text-2xl font-bold mb-4 text-center">Profile</h2>
+                <p class="text-center mb-4" id="userPhoneNumber">Phone Number:8299823913</p>
+
+            </section>
+           
+        <!-- </section> -->
+        <section class="snap-container" id="snapContainer">
+            <!-- Snap items will be appended here -->
+        </section>
+        <section class="credit-score-section">
+            <h3 class="text-2xl font-bold mb-4">Credit Score Analysis</h3>
+            <p id="totalCredits">Total Credits: 0</p>
+            <h4 class="text-xl font-bold mt-4">Activity History</h4>
+            <ul id="activityHistory">
+                <!-- Activity history will be appended here -->
+            </ul>
+        </section>
+    </main>
+    <footer class="bg-white mt-10 py-6">
+        <div class="container mx-auto text-center">
+            © 2024 www.myntra.com. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        const activityHistory = document.getElementById('activityHistory');
+        let totalCredits = 0;
+
+        function displayActivities(activities) {
+            activityHistory.innerHTML = '';
+            activities.forEach(activity => {
+                totalCredits += activity.credits;
+                const li = document.createElement('li');
+                li.textContent = `Date: ${activity.date}, Likes: ${activity.likes}, Credits: ${activity.credits}`;
+                activityHistory.appendChild(li);
+            });
+            document.getElementById('totalCredits').textContent = `Total Credits: ${totalCredits}`;
+            document.getElementById('credits').textContent = `Credits: ${totalCredits}`;
+        }
+
+        function fetchPhotos() {
+            fetch('https://picsum.photos/v2/list')
+                .then(response => response.json())
+                .then(data => {
+                    const snapContainer = document.getElementById('snapContainer');
+                    data.forEach(photo => {
+                        const snapItem = document.createElement('div');
+                        snapItem.classList.add('snap-item');
+
+                        const img = document.createElement('img');
+                        img.src = photo.download_url;
+                        img.alt = photo.author;
+                        snapItem.appendChild(img);
+
+                        const likeBtn = document.createElement('button');
+                        likeBtn.classList.add('like-btn');
+                        likeBtn.textContent = "Like";
+                        likeBtn.addEventListener('click', () => {
+                            snapItem.classList.add('liked');
+                            setTimeout(() => {
+                                snapItem.classList.remove('liked');
+                            }, 1000);
+                        });
+                        snapItem.appendChild(likeBtn);
+
+                        const likesCount = document.createElement('span');
+                        likesCount.classList.add('likes-count');
+                        const initialLikes = Math.floor(Math.random() * 100); // Random likes for simulation
+                        likesCount.textContent = `Likes: ${initialLikes}`;
+                        snapItem.appendChild(likesCount);
+
+                        snapContainer.appendChild(snapItem);
+
+                        const activity = {
+                            date: new Date().toLocaleDateString(),
+                            likes: initialLikes,
+                            credits: Math.floor(initialLikes / 2) // Example credit calculation
+                        };
+                        displayActivities([activity]); // Display new activity immediately
+                    });
+                })
+                .catch(error => console.error('Error fetching photos:', error));
+        }
+
+        fetchPhotos();
+    </script>
+</body>
+
+</html>
