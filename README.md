@@ -27,8 +27,8 @@ Our solution targets increased user interaction and retention, especially among 
 ### Frontend
 - **Location**: `/frontend`
   - **HTML Files**:
-    - `index.html`: The main entry point for the application.
-    - `inde.html`: Interface for the AI-based price negotiator.
+    - `inde.html`: The main entry point for the application.
+    - `index.html`: Interface for the AI-based price negotiator.
     - `dashboard.html`: Page for the Snap of the Day competition.
     - `login.html`: login for the Snap of the Day competition.
      - `profile.html`: User profile for the Snap of the Day competition.
@@ -43,8 +43,8 @@ Our solution targets increased user interaction and retention, especially among 
     - `dashboard.css`: Styles specific to the Snap of the Day page.
 
 ### Backend
-- **Location**: `/data/backend.sql`
-  - This SQL file contains the database schema, including tables and queries used for the application.
+- **Location**:  /data/backend.ipynb
+This Jupyter Notebook contains the backend logic, including database interactions and API endpoints for the application.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
