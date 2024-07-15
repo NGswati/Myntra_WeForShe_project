@@ -28,8 +28,9 @@ Our solution targets increased user interaction and retention, especially among 
 - **Location**: `/frontend`
   - **HTML Files**:
     - `index.html`: The main entry point for the application.
-    - `negotiator.html`: Interface for the AI-based price negotiator.
-    - `sotd.html`: Page for the Snap of the Day competition.
+    - `inde.html`: Interface for the AI-based price negotiator.
+    - `dashboard.html`: Page for the Snap of the Day competition.
+    - `login.html`: login for the Snap of the Day competition.
   - **JavaScript Files**:
     - `main.js`: Contains the core logic for the application.
     - `negotiator.js`: Handles the negotiation logic and interactions.
