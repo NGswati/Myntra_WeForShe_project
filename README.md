@@ -36,7 +36,10 @@ Our solution targets increased user interaction and retention, especially among 
 
   - **JavaScript Files**:
     - `server.js`: Contains the core logic for the application.
-    - 
+    - `bag.js`: Contains the core logic for the bag.
+    - `carosuol.js`: Contains the core logic for the sliding window
+    - `index.js`: Contains the core logic for the front page.
+
   - **CSS Files**:
     - `styles.css`: Main stylesheet for the application.
     - `login.css`: Styles specific to the negotiator page.
