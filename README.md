@@ -31,14 +31,16 @@ Our solution targets increased user interaction and retention, especially among 
     - `inde.html`: Interface for the AI-based price negotiator.
     - `dashboard.html`: Page for the Snap of the Day competition.
     - `login.html`: login for the Snap of the Day competition.
+     - `profile.html`: User profile for the Snap of the Day competition.
+     - `bag.html`: Products to be bought
+
   - **JavaScript Files**:
-    - `main.js`: Contains the core logic for the application.
-    - `negotiator.js`: Handles the negotiation logic and interactions.
-    - `sotd.js`: Manages the Snap of the Day features, including uploading and voting on snaps.
+    - `server.js`: Contains the core logic for the application.
+    - 
   - **CSS Files**:
     - `styles.css`: Main stylesheet for the application.
-    - `negotiator.css`: Styles specific to the negotiator page.
-    - `sotd.css`: Styles specific to the Snap of the Day page.
+    - `login.css`: Styles specific to the negotiator page.
+    - `dashboard.css`: Styles specific to the Snap of the Day page.
 
 ### Backend
 - **Location**: `/data/backend.sql`
