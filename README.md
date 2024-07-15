@@ -35,7 +35,7 @@ Our solution targets increased user interaction and retention, especially among 
      - `bag.html`: Products to be bought
 
   - **JavaScript Files**:
-    - `server.js`: Contains the core logic for the application.
+    - `server.js`: Contains the core logic for the application with backend integaration and node server
     - `bag.js`: Contains the core logic for the bag.
     - `carosuol.js`: Contains the core logic for the sliding window
     - `index.js`: Contains the core logic for the front page.
