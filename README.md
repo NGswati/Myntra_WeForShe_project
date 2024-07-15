@@ -49,8 +49,6 @@ Our solution targets increased user interaction and retention, especially among 
 - **Location**:  /data/backend.ipynb
 This Jupyter Notebook contains the backend logic, including database interactions and API endpoints for the application.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Note
 Please ensure you have all the required dependencies installed and properly configured before running the project. Refer to the `backend.ipynb` file for detailed database schema and setup. Make sure your MySQL database is set up correctly with the provided schema.
