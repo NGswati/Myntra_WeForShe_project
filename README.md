@@ -30,7 +30,7 @@ Our solution targets increased user interaction and retention, especially among 
     - `inde.html`: The main entry point for the application.
     - `index.html`: Interface for the AI-based price negotiator.
     - `dashboard.html`: Page for the Snap of the Day competition.
-    - `login.html`: login for the Snap of the Day competition.
+     -'login.html': login page for Myntra app embedded in front of dashboard Sothat all registered candidate enters Snap of the Day competition.
      - `profile.html`: User profile for the Snap of the Day competition.
      - `bag.html`: Products to be bought
 
