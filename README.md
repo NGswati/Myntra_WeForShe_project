@@ -1,5 +1,5 @@
 
-# Myntra Hackathon WE_FOR_HER
+# Myntra Hackathon WE_FOR_SHE
 
 ## Introduction
 Welcome to our innovative project developed for the Myntra "We for Her" Hackathon. Our project aims to enhance user engagement on the Myntra platform by introducing two key features:
